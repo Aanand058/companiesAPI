@@ -7,6 +7,16 @@
 *  Name: _____Aanand Aman_________________ Student ID: __166125211____________ Date: ____2023/09/11____________
 *  Cyclic Link: https://pink-wicked-perch.cyclic.app/
 *
+
+Note: Made changes in companiesDB.js 
+    From:
+    deleteCompanyByName(name) {
+    return this.Movie.deleteOne({ name: name }).exec();
+  }
+    To:
+    deleteCompanyByName(name) {
+    return this.Company.deleteOne({ name: name }).exec();
+  }
 ********************************************************************************/ 
 
 
