@@ -76,7 +76,7 @@ app.post("/api/companies", (req, res) => {
 
 //•	GET /api/companies
 app.get("/api/companies", (req, res) => {
-    db.getAllCompanies(req.query.page, req.query.perPage, req.query.tag.toLowerCase())
+    db.getAllCompanies(req.query.page, req.query.perPage, req.query.tag)
         .then((company) => {
             res.status(200).json(company);
         })
