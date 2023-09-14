@@ -35,7 +35,6 @@ app.use(cors());
 app.use(express.json());
 
 
-// Start the server
 db.initialize(process.env.MONGODB_CONN_STRING).then(() => {
     app.listen(HTTP_PORT, () => {
         console.log(`Server listening on: ${HTTP_PORT}`);
