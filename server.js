@@ -17,6 +17,13 @@ Note: Made changes in companiesDB.js
     deleteCompanyByName(name) {
     return this.Company.deleteOne({ name: name }).exec();
   }
+
+ Note: Used body-parser to upload data again after testing the delete api
+  const bodyParser = require('body-parser');
+
+  app.use(bodyParser.json({limit:'50mb'}));
+
+
 ********************************************************************************/ 
 
 
