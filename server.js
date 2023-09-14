@@ -30,9 +30,12 @@ const HTTP_PORT = process.env.PORT || 8080;
 const CompaniesDB = require("./modules/companiesDB.js");
 const db = new CompaniesDB();
 
+const bodyParser = require('body-parser');
+
 
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json({limit:'50mb'}));
+
 
 
 db.initialize(process.env.MONGODB_CONN_STRING).then(() => {
@@ -66,7 +69,7 @@ app.post("/api/companies", (req, res) => {
 
 //•	GET /api/companies
 app.get("/api/companies", (req, res) => {
-    db.getAllCompanies(req.query.page, req.query.perPage, req.query.tag)
+    db.getAllCompanies(req.query.page, req.query.perPage, req.query.tag.toLowerCase())
         .then((company) => {
             res.status(200).json(company);
         })
