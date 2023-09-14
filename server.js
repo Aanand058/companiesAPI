@@ -102,8 +102,8 @@ app.get("/api/company/:name", (req, res) => {
 //•	PUT /api/company
 app.put("/api/company/:name", (req, res) => {
     db.updateCompanyByName(req.body, req.params.name)
-        .then(() => {
-            res.status(200).json({ message: 'Company updated successfully!' })
+        .then((updatedCompany) => {
+            res.status(200).json(updatedCompany);
         })
         .catch(() => {
             res.status(500).json({ message: `Fail to update company ${req.params.name}` });
@@ -116,7 +116,7 @@ app.put("/api/company/:name", (req, res) => {
 app.delete("/api/company/:name", (req, res) => {
     db.deleteCompanyByName(req.params.name)
         .then((() => {
-            res.status(200).json({ message: 'Company deleted' });
+            res.status(204).end();
         }))
         .catch(() => {
             res.status(500).json({ message: `Fail to delete company ${req.params.name}` });
